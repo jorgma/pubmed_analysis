@@ -1,3 +1,5 @@
+This is a tool to help download articles from pubmed.
+
 ### Main files:
 #### 1. from pubmed.py
 
@@ -11,7 +13,7 @@ You should set **store_file_name** before usage.
 If you want to download cited info from scratch,
 you have to **delete cited_pmid.npy** manually. In general, you can leave other setting by default.
 
-#### 1. search_pubmed.py
+#### 2. search_pubmed.py
 Used to get pmids from searching pubmed, download articles info, e.g., title, authors.  
 
 You should set **store_file_name**. 
@@ -34,7 +36,7 @@ entrez_result = EntrezSearch(
 If you want to download cited info from scratch,
 you have to **delete cited_pmid.npy** manually. In general, you can leave other setting by default.
 
-### from_given_pmids.py
+### 3. from_given_pmids.py
 
 Download articles info with given pmids.
 
@@ -45,12 +47,13 @@ You should set **store_file_name**.
 
 You should specify **origin_pmid_list** by yourself. 
 >Example:  
+
 `origin_pmid_list = ['32303574', '32292814']`
 
 ### install dependency
 
 
 
-**If you have any doubt, do not hesitate to contact me.**
+**Btw, if you have any doubt, do not hesitate to contact me.**
 
 
