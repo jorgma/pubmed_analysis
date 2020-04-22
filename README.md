@@ -3,11 +3,11 @@ This is a tool to help download articles from pubmed.
 ### install dependency
 run `pip install -r requirements.txt`
 
-Then you can try to run `python from_given_pmids.py`, which takes 2 minutes more or less.
+Then you can try to run `python from_given_pmids.py`, which takes 2 minutes more or less.  
 If there is no error, then everything is ok.
 
 ### Main files:
-#### 1. from pubmed.py
+#### 1. from_litcovid.py
 
 Used to get pmids from litcovid website, download articles info, e.g., title, authors.    
 
