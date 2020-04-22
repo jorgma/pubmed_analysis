@@ -207,6 +207,8 @@ class ArticleInfo:
 
             if s[0] == ',' or s[0] == '.':
                 s = s[1:]
+            if s == '':
+                return ''
             if s[-1] == ')':
                 s = s[:-1]
             return s
