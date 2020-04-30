@@ -320,13 +320,13 @@ class RDataFrame:
         print('------------------------------------------------------------')
         self.update_cnet()
         print('------------------------------------------------------------')
-        self.update_sum_single()
-        print('------------------------------------------------------------')
-        self.update_sum_Mesh()
-        print('------------------------------------------------------------')
-        self.update_rel()
-        print('------------------------------------------------------------')
-        self.update_relPMID()
+        # self.update_sum_single()
+        # print('------------------------------------------------------------')
+        # self.update_sum_Mesh()
+        # print('------------------------------------------------------------')
+        # self.update_rel()
+        # print('------------------------------------------------------------')
+        # self.update_relPMID()
 
     def update_nodes(self):
         print('Update nodes.')
@@ -581,10 +581,10 @@ class RDataFrame:
         print('nodes: ', len(self.rdata['nodes']['pmid']))
         print('nodems: ', len(self.rdata['nodems']['pmid']))
         print('cnet: ', len(self.rdata['cnet']['source']))
-        print('sumSingle: ', len(self.rdata['sumSingle']['type']))
-        print('sumMESH: ', len(self.rdata['sumMESH']['type']))
-        print('rel: ', len(self.rdata['rel']['type']))
-        print('relPMID: ', len(self.rdata['relPMID']['type']))
+        # print('sumSingle: ', len(self.rdata['sumSingle']['type']))
+        # print('sumMESH: ', len(self.rdata['sumMESH']['type']))
+        # print('rel: ', len(self.rdata['rel']['type']))
+        # print('relPMID: ', len(self.rdata['relPMID']['type']))
 
         if not os.path.exists(self.store_file_name+'feather/'):
             os.mkdir(self.store_file_name+'feather/')
@@ -594,20 +594,20 @@ class RDataFrame:
         feather.write_dataframe(df, self.store_file_name+'feather/nodems.feather')
         df = pd.DataFrame(self.rdata['cnet'])
         feather.write_dataframe(df, self.store_file_name+'feather/cnet.feather')
-        df = pd.DataFrame(self.rdata['sumSingle'])
-        feather.write_dataframe(df, self.store_file_name+'feather/sumSingle.feather')
-        df = pd.DataFrame(self.rdata['sumMESH'])
-        feather.write_dataframe(df, self.store_file_name+'feather/sumMESH.feather')
+        # df = pd.DataFrame(self.rdata['sumSingle'])
+        # feather.write_dataframe(df, self.store_file_name+'feather/sumSingle.feather')
+        # df = pd.DataFrame(self.rdata['sumMESH'])
+        # feather.write_dataframe(df, self.store_file_name+'feather/sumMESH.feather')
         fdate = {
             # 'fdate':[datetime(2020, 4, 14)]
             'fdate': [self.date]
         }
         df = pd.DataFrame(fdate)
         feather.write_dataframe(df, self.store_file_name + 'feather/fdate.feather')
-        df = pd.DataFrame(self.rdata['rel'])
-        feather.write_dataframe(df, self.store_file_name+'feather/rel.feather')
-        df = pd.DataFrame(self.rdata['relPMID'])
-        feather.write_dataframe(df, self.store_file_name+'feather/relPMID.feather')
+        # df = pd.DataFrame(self.rdata['rel'])
+        # feather.write_dataframe(df, self.store_file_name+'feather/rel.feather')
+        # df = pd.DataFrame(self.rdata['relPMID'])
+        # feather.write_dataframe(df, self.store_file_name+'feather/relPMID.feather')
 
 
 
