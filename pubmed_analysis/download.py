@@ -209,8 +209,8 @@ class ArticleInfo:
                 s = s[1:]
             if s == '':
                 return ''
-            if s[-1] == ')':
-                s = s[:-1]
+            # if s[-1] == ')':
+            #     s = s[:-1]
             return s
 
         begin_time = time.time()
@@ -265,7 +265,10 @@ class ArticleInfo:
                     item = clean(item)
                     if item == '':
                         continue
-                    temp_list.append(str.lower(item))
+                    if "," in item:
+                        temp_list += item.split(',')
+                    else:
+                        temp_list.append(str.lower(item))
                     article_info['keywords'] = temp_list
 
                 article_info_dict[pmid] = article_info
