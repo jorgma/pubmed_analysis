@@ -201,6 +201,9 @@ class ArticleInfo:
             s.replace("†", " ")
             s.replace("§", " ")
             s.replace("-", " ")
+            s.replace("<", " ")
+            s.replace(">", " ")
+            s.replace("#", " ")
             s = s.rstrip().lstrip()
             if s == '':
                 return ''
