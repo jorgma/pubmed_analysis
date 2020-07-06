@@ -260,8 +260,8 @@ class ArticleInfo:
 
                 temp_list = []
                 for item in article_info['keywords'].split(';'):
-                    item = item.split(':')
-                    item = item[1] if len(item) > 1 else item[0]
+                    # item = item.split(':')
+                    # item = item[1] if len(item) > 1 else item[0]
                     item = clean(item)
                     if item == '':
                         continue

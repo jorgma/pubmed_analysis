@@ -9,7 +9,7 @@ store_file_name = 'data/somewhere/'
 if not os.path.exists(store_file_name):
     os.mkdir(store_file_name)
 
-origin_pmid_list = ['32615317']
+origin_pmid_list = ['32603479']
 
 def get_articles():
     print('total origin pmid:', len(origin_pmid_list))
