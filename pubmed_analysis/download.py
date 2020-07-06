@@ -269,9 +269,9 @@ class ArticleInfo:
                     if item == '':
                         continue
                     if "," in item:
-                        temp_list += item.split(',')
+                        temp_list += item.rstrip().lstrip().split(',')
                     else:
-                        temp_list.append(str.lower(item))
+                        temp_list.append(str.lower(item.rstrip().lstrip()))
                     article_info['keywords'] = temp_list
 
                 article_info_dict[pmid] = article_info
