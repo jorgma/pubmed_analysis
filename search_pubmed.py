@@ -3,6 +3,7 @@ import os
 from pubmed_analysis import download as d
 from pubmed_analysis.download import EntrezSearch, MAX_NUMBER_OF_ARTICLE
 from pubmed_analysis import data_manipulation as dm
+from pubmed_analysis.utils import get_args
 
 args = get_args()
 mail = args.mail
