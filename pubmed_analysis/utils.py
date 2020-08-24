@@ -1,7 +1,21 @@
-import matplotlib.pyplot as plt
-import os
-import numpy as np
-from pyvis.network import Network
+# import matplotlib.pyplot as plt
+# import os
+# import numpy as np
+# from pyvis.network import Network
+import argparse
+
+
+def get_args():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--mail", default='mail.yujun.liao@gmail.com')
+    parser.add_argument("--tool", default='tool_yujun')
+    parser.add_argument("--apikey", default='721d1d88d973f59b3449e2e041f167de6308')
+    parser.add_argument("--s", default=1, type=float)
+    parser.add_argument("--plist", nargs='+', default=['32603479'])
+    parser.add_argument("--search", default='sars')
+
+    return parser.parse_args()
 
 
 # class DataHelper:

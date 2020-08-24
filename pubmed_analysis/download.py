@@ -6,7 +6,11 @@ import pubmed_parser as pp
 import time
 from lxml import html
 
+
 MAX_NUMBER_OF_ARTICLE = 100000
+
+
+
 
 
 class EntrezSearch:
@@ -19,10 +23,15 @@ class EntrezSearch:
 
     """
 
-    def __init__(self, term, store_file_name='', mindate='', maxdate='', retmax=20, update=False, save=True):
-        self.base_url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?\
-        db=pubmed&mail=mail.yujun.liao@gmail.com&tool=tool_yujun\
-        &apikey=721d1d88d973f59b3449e2e041f167de6308'
+    def __init__(self, term, store_file_name='', mindate='', maxdate='', retmax=20, update=False, save=True,
+                 mail='', tool='', apikey=''):
+        self.base_url = f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?\
+        db=pubmed&mail={mail}&tool={tool}\
+        &apikey={apikey}'
+
+        # self.base_url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?\
+        #         db=pubmed&mail=mail.yujun.liao@gmail.com&tool=tool_yujun\
+        #         &apikey=721d1d88d973f59b3449e2e041f167de6308'
         # example
         # https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=32272198
         self.save = save
@@ -120,7 +129,8 @@ def get_citation_pmid_dict(origin_pmid_list, store_file_name='', update=False):
 # cited 被引用数量
 # url example
 # https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?dbfrom=pubmed&linkname=pubmed_pmc_refs&id=21876726&tool=my_tool&email=my_email@example.com
-def get_cited_pmid_dict(origin_pmid_list, store_file_name='', update=False):
+def get_cited_pmid_dict(origin_pmid_list, store_file_name='', update=False,
+                        mail='', tool='', apikey=''):
     print('------------------------------------------------------------')
     print('Get cited info:')
     begin_time = time.time()
@@ -145,10 +155,14 @@ def get_cited_pmid_dict(origin_pmid_list, store_file_name='', update=False):
             print(i, ' new pmid are added.', )
         print(i, end=' ')
         time.sleep(1)
+        # page = requests.get(
+        #     'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?dbfrom=pubmed&linkname=pubmed_pmc_refs\
+        #     &id='+pmid+'&tool=tool_yujun&email=mail.yujun.liao@gmail.com'+\
+        #                '&apikey=721d1d88d973f59b3449e2e041f167de6308')
         page = requests.get(
-            'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?dbfrom=pubmed&linkname=pubmed_pmc_refs\
-            &id='+pmid+'&tool=tool_yujun&email=mail.yujun.liao@gmail.com'+\
-                       '&apikey=721d1d88d973f59b3449e2e041f167de6308')
+            f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?dbfrom=pubmed&linkname=pubmed_pmc_refs\
+            &id={pmid}&tool={tool}&email={mail}\
+            &apikey={apikey}')
         tree = html.fromstring(page.content)
         ids = tree.xpath("//id")
         ids = [i.text for i in ids]

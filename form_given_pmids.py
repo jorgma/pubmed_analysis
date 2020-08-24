@@ -3,13 +3,26 @@ import os
 from pubmed_analysis import download as d
 from pubmed_analysis.download import EntrezSearch, MAX_NUMBER_OF_ARTICLE
 from pubmed_analysis import data_manipulation as dm
+from pubmed_analysis.utils import get_args
+
+args = get_args()
+mail = args.mail
+tool = args.tool
+apikey = args.apikey
+
+frequency = args.s
+plist = args.plist
+search = args.search
+
+
 
 
 store_file_name = 'data/somewhere/'
 if not os.path.exists(store_file_name):
     os.mkdir(store_file_name)
 
-origin_pmid_list = ['32603479']
+# origin_pmid_list = ['32603479']
+origin_pmid_list = plist
 
 def get_articles():
     print('total origin pmid:', len(origin_pmid_list))
@@ -28,7 +41,10 @@ def get_articles():
     d.get_cited_pmid_dict(
         list(set(pmid_list)),
         store_file_name=store_file_name,
-        update=True
+        update=True,
+        mail=mail,
+        tool=tool,
+        apikey=apikey
     )
 
     article_info = d.ArticleInfo(

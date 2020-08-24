@@ -4,6 +4,15 @@ from pubmed_analysis import download as d
 from pubmed_analysis import data_manipulation as dm
 import wget
 
+args = get_args()
+mail = args.mail
+tool = args.tool
+apikey = args.apikey
+
+frequency = args.s
+plist = args.plist
+search = args.search
+
 
 store_file_name = 'data/covid19/'
 if not os.path.exists(store_file_name):
@@ -37,7 +46,11 @@ def get_articles():
     d.get_cited_pmid_dict(
         list(set(pmid_list)),
         store_file_name=store_file_name,
-        update=True)
+        update=True,
+        mail = mail,
+        tool = tool,
+        apikey = apikey
+    )
 
     article_info = d.ArticleInfo(
         store_file_name=store_file_name,
