@@ -13,11 +13,11 @@ apikey = args.apikey
 frequency = args.s
 plist = args.plist
 search = args.search
+output = args.output
 
 
 
-
-store_file_name = 'data/somewhere/'
+store_file_name = f'data/{output}/'
 if not os.path.exists(store_file_name):
     os.mkdir(store_file_name)
 

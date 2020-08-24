@@ -14,6 +14,7 @@ def get_args():
     parser.add_argument("--s", default=1, type=float)
     parser.add_argument("--plist", nargs='+', default=['32603479'])
     parser.add_argument("--search", default='sars')
+    parser.add_argument("--output", default='somewhere')
 
     return parser.parse_args()
 
